@@ -1,7 +1,7 @@
-# Generated from github.com/a1murt/airbag Packaging/airbag.rb for the v0.1.4 release.
+# Generated from github.com/a1murt/airbag Packaging/airbag.rb for the v0.1.5 release.
 cask "airbag" do
-  version "0.1.4"
-  sha256 "8bcc13f1fe126f0a9b5972096f8d0c7bd24dde7dea5cbaa01bb8373461d60fbd"
+  version "0.1.5"
+  sha256 "5436c66b957370e08b0618f0758692e750590e2dd4bbb43e3119a551c2a96868"
 
   url "https://github.com/a1murt/airbag/releases/download/v#{version}/Airbag-#{version}.zip"
   name "Airbag"
