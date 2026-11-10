@@ -1,7 +1,7 @@
-# Generated from github.com/a1murt/airbag Packaging/airbag.rb for the v0.1.3 release.
+# Generated from github.com/a1murt/airbag Packaging/airbag.rb for the v0.1.4 release.
 cask "airbag" do
-  version "0.1.3"
-  sha256 "691d4842fb5c4fed4a312b814e93061dff8989b6b254a37123e015e971f593a8"
+  version "0.1.4"
+  sha256 "8bcc13f1fe126f0a9b5972096f8d0c7bd24dde7dea5cbaa01bb8373461d60fbd"
 
   url "https://github.com/a1murt/airbag/releases/download/v#{version}/Airbag-#{version}.zip"
   name "Airbag"
@@ -30,10 +30,10 @@ cask "airbag" do
     run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{appdir}}/Airbag.app"], must_succeed: false
   end
 
-  # Remove Airbag's hook entries from every agent before the binary disappears: a hook pointing at a missing
-  # program fails open for most agents, but GitHub Copilot CLI denies every shell command when a hook errors.
-  # Homebrew runs this on upgrades as well, so the hooks are remembered and the postflight of the new version puts
-  # them back; after a real uninstall none is left pointing at the missing binary.
+  # Remove Airbag's hook entries from every agent before the binary disappears, so none is left pointing at a
+  # missing program (entries written before 0.1.4 make GitHub Copilot CLI and Gemini CLI refuse every shell command
+  # then). Homebrew runs this on upgrades as well, so the hooks are remembered and the postflight of the new version
+  # puts them back.
   uninstall quit:   "dev.airbag.Airbag",
             script: {
               executable:   "#{appdir}/Airbag.app/Contents/Helpers/airbag",
